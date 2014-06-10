@@ -2,10 +2,10 @@ class Person < ActiveRecord::Base
   has_many :person_phone_numbers
   has_and_belongs_to_many :game_sessions
 
-  # to do - validate uniqueness of person/phone number
-  # to do - add is_valid column to personPhoneNUmber
 
   def add_phone_number(phone_number, phone_type)
+  # to do - validate uniqueness of person/phone number
+  # to do - add is_valid column to personPhoneNUmber
     self.person_phone_numbers << (PersonPhoneNumber.new :phone_number => phone_number, :phone_type => phone_type)
   end
 
@@ -32,8 +32,10 @@ class Person < ActiveRecord::Base
     if gs
       gs.cancel_game_session
       puts "Cancelled game session (id=#{gs.id})"
+      true
     else
       puts "No open game sessions found!"
+      false
     end
   end 
 

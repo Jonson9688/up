@@ -23,4 +23,9 @@ class GameSession < ActiveRecord::Base
     self.is_cancelled = true
     self.save!
   end
+
+  def return_roster
+    self.people
+  end
+
 end
