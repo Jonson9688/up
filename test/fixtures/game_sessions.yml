@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 1
+  start_time: 2014-06-10 13:06:08
+  location: MyString
+  sport: MyString
+  request_time: 2014-06-10 13:06:08
+  is_cancelled: MyString
+
+two:
+  owner_id: 1
+  start_time: 2014-06-10 13:06:08
+  location: MyString
+  sport: MyString
+  request_time: 2014-06-10 13:06:08
+  is_cancelled: MyString
