@@ -1,0 +1,703 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 10.0.2.2 at 2014-06-10 16:44:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/railties-4.1.1/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 11ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilio" for 10.0.2.2 at 2014-06-10 16:44:21 -0500
+
+ActionController::RoutingError (No route matches [GET] "/twilio"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.4ms)
+
+
+Started GET "/twilio?action=%22register_person%22" for 10.0.2.2 at 2014-06-10 16:44:49 -0500
+
+ActionController::RoutingError (No route matches [GET] "/twilio"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (10.8ms)
+
+
+Started GET "/twilio" for 10.0.2.2 at 2014-06-10 16:45:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/twilio"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (14.7ms)
+
+
+Started GET "/twilio/parse_message?action=%22register_person%22&firstname=%22test_user%22" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"\"test_user\""}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 320ms (Views: 313.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:11 -0500
+
+
+Started GET "/twilio/parse_message" for 10.0.2.2 at 2014-06-10 16:46:51 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:46:51 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:51 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:46:51 -0500
+
+
+Started GET "/twilio/parse_message?action=%22register_person%22&firstname=%22test_user%22" for 10.0.2.2 at 2014-06-10 16:46:54 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"\"test_user\""}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:46:54 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:46:54 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:46:54 -0500
+
+
+Started GET "/twilio/parse_message?action=%22register_person%22&firstname=%22test_user%22" for 10.0.2.2 at 2014-06-10 16:48:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"\"test_user\""}
+  Rendered twilio/parse_message.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 28ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:48:27 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:48:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:48:27 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:48:27 -0500
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:48:47 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:48:47 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:48:47 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:48:47 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:48:47 -0500
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:49:26 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  Rendered twilio/parse_message.html.erb within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (undefined local variable or method `person' for #<#<Class:0x007f4b98e748a8>:0x007f4ba8031100>):
+    2: <p>Find me in app/views/twilio/parse_message.html.erb</p>
+    3: 
+    4: 
+    5: <% person.id %>
+  app/views/twilio/parse_message.html.erb:5:in `_app_views_twilio_parse_message_html_erb___3658064172654229105_69981459037860'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (14.9ms)
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:49:40 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  Rendered twilio/parse_message.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined local variable or method `person' for #<#<Class:0x007f4b98e748a8>:0x007f4ba8126a10>):
+    2: <p>Find me in app/views/twilio/parse_message.html.erb</p>
+    3: 
+    4: 
+    5: <%= person.id %>
+  app/views/twilio/parse_message.html.erb:5:in `_app_views_twilio_parse_message_html_erb___3658064172654229105_69981459524500'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (7.0ms)
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:50:55 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  [1m[35mPerson Load (0.4ms)[0m  SELECT "people".* FROM "people"
+  Rendered twilio/parse_message.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 16ms (Views: 7.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:50:56 -0500
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:09 -0500
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people"
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:11 -0500
+
+
+Started GET "/twilio/parse_message?action=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"firstname"=>"test_user"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:21 -0500
+
+
+Started GET "/twilio/parse_message?myaction=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"myaction"=>"register_person", "firstname"=>"test_user"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people"
+  Rendered twilio/parse_message.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:39 -0500
+
+
+Started GET "/twilio/parse_message?textaction=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"register_person", "firstname"=>"test_user"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:49 -0500
+
+
+Started GET "/twilio/parse_message?textaction=register_person&firstname=test_user" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"register_person", "firstname"=>"test_user"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-06-10 21:51:59.440066"], ["firstname", "test_user"], ["updated_at", "2014-06-10 21:51:59.440066"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 17ms (Views: 3.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:51:59 -0500
+
+
+Started GET "/twilio/parse_message?textaction=register_person&firstname=test_user2" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"register_person", "firstname"=>"test_user2"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-06-10 21:52:02.214604"], ["firstname", "test_user2"], ["updated_at", "2014-06-10 21:52:02.214604"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:52:02 -0500
+
+
+Started GET "/twilio/parse_message?textaction=register_person&firstname=test_user2&lastname=last&nickname=bunny" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"register_person", "firstname"=>"test_user2", "lastname"=>"last", "nickname"=>"bunny"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("created_at", "firstname", "lastname", "nickname", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-06-10 21:53:07.589762"], ["firstname", "test_user2"], ["lastname", "last"], ["nickname", "bunny"], ["updated_at", "2014-06-10 21:53:07.589762"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 14ms (Views: 3.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 16:53:07 -0500
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "person_phone_numbers" ("created_at", "person_id", "phone_number", "phone_type", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-06-10 22:00:22.247964"], ["person_id", 11], ["phone_number", "7602140707"], ["phone_type", "mobile"], ["updated_at", "2014-06-10 22:00:22.247964"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mPerson Load (1.0ms)[0m  [1mSELECT "people".* FROM "people"  WHERE "people"."phone_number" = '7602140707' AND "people"."phone_type" = 'mobile'[0m
+PG::UndefinedColumn: ERROR:  column people.phone_number does not exist
+LINE 1: SELECT "people".* FROM "people"  WHERE "people"."phone_numbe...
+                                               ^
+: SELECT "people".* FROM "people"  WHERE "people"."phone_number" = '7602140707' AND "people"."phone_type" = 'mobile'
+  [1m[35mPersonPhoneNumber Load (0.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 11]]
+
+
+Started GET "/twilio/parse_message?textaction=create_game_session&phone_number=7602140707&sport=basketball&location=park&time=2014-06-10" for 10.0.2.2 at 2014-06-10 17:04:36 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"create_game_session", "phone_number"=>"7602140707", "sport"=>"basketball", "location"=>"park", "time"=>"2014-06-10"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 11]]
+Completed 500 Internal Server Error in 17ms
+
+NameError (undefined local variable or method `param' for #<TwilioController:0x007f4b98f8e928>):
+  app/controllers/twilio_controller.rb:9:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/twilio/parse_message?textaction=create_game_session&phone_number=7602140707&sport=basketball&location=park&time=2014-06-10" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"create_game_session", "phone_number"=>"7602140707", "sport"=>"basketball", "location"=>"park", "time"=>"2014-06-10"}
+  [1m[35mPersonPhoneNumber Load (0.1ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 11]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 33ms (Views: 5.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 17:04:48 -0500
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mGameSession Load (0.4ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 11]]
+  [1m[36mPersonPhoneNumber Load (0.5ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1[0m
+  [1m[35mPerson Load (0.3ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mGameSession Load (0.4ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 11]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "game_sessions" SET "is_cancelled" = $1, "updated_at" = $2 WHERE "game_sessions"."id" = 6[0m  [["is_cancelled", "t"], ["updated_at", "2014-06-10 22:06:27.302856"]]
+  [1m[35m (2.1ms)[0m  COMMIT
+  [1m[36mGameSession Load (0.4ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 11]]
+
+
+Started GET "/twilio/parse_message?textaction=create_game_session&phone_number=7602140707&sport=basketball&location=park&time=2014-06-10" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"create_game_session", "phone_number"=>"7602140707", "sport"=>"basketball", "location"=>"park", "time"=>"2014-06-10"}
+  [1m[35mPersonPhoneNumber Load (0.3ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mGameSession Load (0.2ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "game_sessions" ("created_at", "location", "owner_id", "request_time", "sport", "start_time", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-06-10 22:06:37.144551"], ["location", "park"], ["owner_id", 11], ["request_time", "2014-06-10 22:06:37.143404"], ["sport", "basketball"], ["start_time", "2014-06-10 00:00:00.000000"], ["updated_at", "2014-06-10 22:06:37.144551"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)[0m  [["game_session_id", 7], ["person_id", 11]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people"[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 19ms (Views: 3.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 17:06:37 -0500
+  [1m[35mGameSession Load (0.7ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 11]]
+
+
+Started GET "/twilio/parse_message?textaction=cancel_game_session&phone_number=7602140707&sport=basketball&location=park&time=2014-06-10" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"cancel_game_session", "phone_number"=>"7602140707", "sport"=>"basketball", "location"=>"park", "time"=>"2014-06-10"}
+  [1m[35mPersonPhoneNumber Load (0.1ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mGameSession Load (0.2ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "game_sessions" SET "is_cancelled" = $1, "updated_at" = $2 WHERE "game_sessions"."id" = 7  [["is_cancelled", "t"], ["updated_at", "2014-06-10 22:08:13.936423"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people"
+  Rendered twilio/parse_message.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 29ms (Views: 5.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 17:08:13 -0500
+
+
+Started GET "/twilio/parse_message?textaction=create_game_session&phone_number=7602140707&sport=basketball&location=park&time=2014-06-10" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"textaction"=>"create_game_session", "phone_number"=>"7602140707", "sport"=>"basketball", "location"=>"park", "time"=>"2014-06-10"}
+  [1m[36mPersonPhoneNumber Load (0.3ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707' LIMIT 1[0m
+  [1m[35mPerson Load (0.1ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mGameSession Load (0.3ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 11]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "game_sessions" ("created_at", "location", "owner_id", "request_time", "sport", "start_time", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-06-10 22:09:09.228964"], ["location", "park"], ["owner_id", 11], ["request_time", "2014-06-10 22:09:09.228018"], ["sport", "basketball"], ["start_time", "2014-06-10 00:00:00.000000"], ["updated_at", "2014-06-10 22:09:09.228964"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)  [["game_session_id", 8], ["person_id", 11]]
+  [1m[36m (3.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people"
+  Rendered twilio/parse_message.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 9.4ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
