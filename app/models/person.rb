@@ -2,6 +2,13 @@ class Person < ActiveRecord::Base
   has_many :person_phone_numbers
   has_and_belongs_to_many :game_sessions
 
+  def set_name(p_firstname, p_nickname, p_lastname)
+    self.firstname = p_firstname
+    self.nickname = p_nickname
+    self.lastname = p_lastname
+    self.save!
+  end
+
 
   def add_phone_number(phone_number, phone_type)
   # to do - validate uniqueness of person/phone number
@@ -14,9 +21,12 @@ class Person < ActiveRecord::Base
     # check if open game session already exists
     gs = self.has_open_game_session
     if !gs
-      self.game_sessions <<  (GameSession.new :sport => sport, :location => location, :start_time => start_time, :request_time => DateTime.now, :owner_id => self.id)
+      gs = GameSession.new :sport => sport, :location => location, :start_time => start_time, :request_time => DateTime.now, :owner_id => self.id
+      self.game_sessions << (gs)
+      gs 
     else
       puts "Open game session (id=#{gs.id}) already exists"
+      nil 
     end
   end
 
@@ -24,7 +34,9 @@ class Person < ActiveRecord::Base
     # rework logic here, its not right
     # return most recent valid request
     gs = self.game_sessions.order("request_time DESC").first
-    gs if gs.is_valid
+    if gs
+      gs if gs.is_valid
+    end
   end 
 
   def cancel_open_game_session
@@ -32,10 +44,10 @@ class Person < ActiveRecord::Base
     if gs
       gs.cancel_game_session
       puts "Cancelled game session (id=#{gs.id})"
-      true
+      gs
     else
       puts "No open game sessions found!"
-      false
+      nil
     end
   end 
 

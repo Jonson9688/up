@@ -701,3 +701,3088 @@ Started GET "/assets/twilio.css?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -050
 
 
 Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-06-10 17:09:09 -0500
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (5.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePeople (20140610180526)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "people" ("id" serial primary key, "firstname" character varying(255), "lastname" character varying(255), "nickname" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140610180526"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePersonPhoneNumbers (20140610180548)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "person_phone_numbers" ("id" serial primary key, "person_id" integer, "phone_number" character varying(255), "phone_type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140610180548"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateGameSessions (20140610180608)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "game_sessions" ("id" serial primary key, "owner_id" integer, "start_time" timestamp, "location" character varying(255), "sport" character varying(255), "request_time" timestamp, "is_cancelled" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140610180608"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateJoinTableGameSessionPeople (20140610180625)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "game_sessions_people" ("person_id" integer NOT NULL, "game_session_id" integer NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140610180625"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:28:14 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  [1m[35mPersonPhoneNumber Load (0.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 26ms
+
+NoMethodError (undefined method `person' for nil:NilClass):
+  app/controllers/twilio_controller.rb:24:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 42ms (Views: 41.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:29:02 -0500
+
+
+Started POST "/parse_message" for 192.168.2.35 at 2014-06-10 18:29:13 -0500
+
+ActionController::RoutingError (No route matches [POST] "/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (22.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.5ms)
+
+
+Started GET "/parse_message" for 192.168.2.35 at 2014-06-10 18:30:29 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (17.4ms)
+
+
+Started GET "/parse_message" for 192.168.2.35 at 2014-06-10 18:30:30 -0500
+
+ActionController::RoutingError (No route matches [GET] "/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.2ms)
+
+
+Started GET "/parse_message" for 192.168.2.35 at 2014-06-10 18:31:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.8ms)
+
+
+Started GET "/parse_message" for 192.168.2.35 at 2014-06-10 18:31:28 -0500
+
+ActionController::RoutingError (No route matches [GET] "/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.8ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:31:33 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 29ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/parse_message?utf8=%E2%9C%93&phone_number=&message=asdf&commit=Send+Text" for 192.168.2.35 at 2014-06-10 18:31:36 -0500
+
+ActionController::RoutingError (No route matches [GET] "/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (11.1ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:32:09 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 30ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:32:11 -0500
+
+ActionController::RoutingError (No route matches [POST] "/twilio/parse_message"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.4ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:32:29 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 31ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:32:32 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"tt", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:32:35 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:05 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:11 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:18 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:34 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:37 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"ASD", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:40 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:49 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:50 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:51 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:52 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:53 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:33:54 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:16 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:17 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:19 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "message"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:50 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:51 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:34:53 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:34:54 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:10 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:11 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:13 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:35:32 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:34 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:35:52 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:36:04 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:05 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:10 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"Test", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:50 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:51 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"asdf", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:36:53 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:37:05 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"asdf", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.6ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '' LIMIT 1
+Completed 500 Internal Server Error in 10ms
+
+NoMethodError (undefined method `person' for nil:NilClass):
+  app/controllers/twilio_controller.rb:24:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.3ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.6ms)
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"asdf", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.1ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '' LIMIT 1[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 18:37:39 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:38:52 -0500
+Processing by TwilioController#parse_message as HTML
+  [1m[35mPersonPhoneNumber Load (0.1ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `person' for nil:NilClass):
+  app/controllers/twilio_controller.rb:25:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.7ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:40:43 -0500
+Processing by TwilioController#parse_message as HTML
+  [1m[36mPersonPhoneNumber Load (0.1ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `person' for nil:NilClass):
+  app/controllers/twilio_controller.rb:23:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.5ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:44:56 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `find_or_create_by_phone_number' for #<Class:0x007f2854b54630>):
+  app/controllers/twilio_controller.rb:23:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.3ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:54:11 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 6ms
+
+NameError (undefined local variable or method `str' for #<TwilioController:0x007f2855175118>):
+  app/controllers/twilio_controller.rb:26:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.1ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:56:30 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `split' for nil:NilClass):
+  app/controllers/twilio_controller.rb:26:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.0ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:56:39 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  app/controllers/twilio_controller.rb:26:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.1ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:56:51 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  app/controllers/twilio_controller.rb:26:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:56:52 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  app/controllers/twilio_controller.rb:26:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.6ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 18:57:16 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `to_str' for nil:NilClass):
+  app/controllers/twilio_controller.rb:27:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:00:25 -0500
+Processing by TwilioController#parse_message as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `split' for nil:NilClass):
+  app/controllers/twilio_controller.rb:27:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:36 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:01:42 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"", "textmessage"=>"Test asdf", "commit"=>"Send Text"}
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:01:43 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:15:36 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:15:46 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"Register Walter Thebest Han", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.6ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "person_phone_numbers" ("created_at", "phone_number", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-06-11 00:15:46.737152"], ["phone_number", "7602140707"], ["updated_at", "2014-06-11 00:15:46.737152"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 31ms
+
+NoMethodError (undefined method `first_or_create' for nil:NilClass):
+  app/controllers/twilio_controller.rb:24:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.0ms)
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT "person_phone_numbers".* FROM "person_phone_numbers"[0m
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people"  WHERE "people"."phone_number" = '7602140707'[0m
+PG::UndefinedColumn: ERROR:  column people.phone_number does not exist
+LINE 1: SELECT "people".* FROM "people"  WHERE "people"."phone_numbe...
+                                               ^
+: SELECT "people".* FROM "people"  WHERE "people"."phone_number" = '7602140707'
+  [1m[35mPerson Load (0.8ms)[0m  SELECT "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id"
+  [1m[36mPerson Load (1.0ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')[0m
+  [1m[35mPerson Load (0.6ms)[0m  SELECT "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')[0m
+  [1m[35mPerson Load (0.6ms)[0m  SELECT "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')
+  [1m[36mPerson Load (0.9ms)[0m  [1mSELECT  "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')  ORDER BY "people"."id" ASC LIMIT 1[0m
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:42:12 -0500
+
+SyntaxError (/home/whan/dev/up/app/controllers/twilio_controller.rb:42: syntax error, unexpected end-of-input, expecting keyword_end):
+  activesupport (4.1.1) lib/active_support/dependencies.rb:443:in `load'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:443:in `block in load_file'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:633:in `new_constants_in'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:442:in `load_file'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:342:in `require_or_load'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:480:in `load_missing_constant'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:180:in `const_missing'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:236:in `constantize'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:552:in `get'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:583:in `constantize'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.1) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.3ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:43:43 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "person_phone_numbers" ("created_at", "phone_number", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-06-11 00:44:13.347028"], ["phone_number", "7602140707"], ["updated_at", "2014-06-11 00:44:13.347028"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mPerson Load (0.4ms)[0m  SELECT  "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')  ORDER BY "people"."id" ASC LIMIT 1
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 53ms (Views: 4.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:44:13 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:23 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.3ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people" INNER JOIN "person_phone_numbers" ON "person_phone_numbers"."person_id" = "people"."id" WHERE (person_phone_numbers.phone_number = '7602140707')  ORDER BY "people"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2014-06-11 00:45:26.425104"], ["updated_at", "2014-06-11 00:45:26.425104"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 37ms (Views: 4.4ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:45:26 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:55:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 37ms (Views: 29.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:04 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (1.1ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 50ms (Views: 4.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:07 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"911", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '911'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "person_phone_numbers" ("created_at", "phone_number", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-06-11 00:55:10.413439"], ["phone_number", "911"], ["updated_at", "2014-06-11 00:55:10.413439"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 24ms (Views: 8.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:10 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"911", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '911'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 13ms (Views: 8.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:55:35 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:57:06 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 41ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:57:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:06 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:06 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:06 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:57:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:07 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 19:57:09 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"911", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (1.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '911'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2014-06-11 00:57:10.023104"], ["updated_at", "2014-06-11 00:57:10.023104"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "person_phone_numbers" SET "person_id" = $1, "updated_at" = $2 WHERE "person_phone_numbers"."id" = 3[0m  [["person_id", 2], ["updated_at", "2014-06-11 00:57:10.040405"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 61ms (Views: 5.9ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 19:57:10 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "person_phone_numbers" ("created_at", "phone_number", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-06-11 01:19:58.357243"], ["phone_number", "9177044688"], ["updated_at", "2014-06-11 01:19:58.357243"]]
+  [1m[35m (2.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "people" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2014-06-11 01:19:58.363176"], ["updated_at", "2014-06-11 01:19:58.363176"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "person_phone_numbers" SET "person_id" = $1, "updated_at" = $2 WHERE "person_phone_numbers"."id" = 4[0m  [["person_id", 3], ["updated_at", "2014-06-11 01:19:58.367947"]]
+  [1m[35m (1.7ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 23ms (Views: 5.5ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:19:58 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:20:16 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"Register Jonson Jdawg Tsai", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.3ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "people" SET "firstname" = $1, "lastname" = $2, "nickname" = $3, "updated_at" = $4 WHERE "people"."id" = 3  [["firstname", "Jonson"], ["lastname", "Tsai"], ["nickname", "Jdawg"], ["updated_at", "2014-06-11 01:21:00.511554"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 41ms (Views: 4.3ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:00 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"Register Johnson Jdawg Tsai", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "people" SET "firstname" = $1, "updated_at" = $2 WHERE "people"."id" = 3[0m  [["firstname", "Johnson"], ["updated_at", "2014-06-11 01:21:30.706530"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 15ms (Views: 6.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:21:30 -0500
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mGameSession Load (0.5ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mGameSession Load (0.4ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 1]]
+  [1m[36mGameSession Load (0.6ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "game_sessions" ("created_at", "location", "owner_id", "request_time", "sport", "start_time", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-06-11 01:37:00.624598"], ["location", "location"], ["owner_id", 1], ["request_time", "2014-06-11 01:37:00.605929"], ["sport", "ball"], ["start_time", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-06-11 01:37:00.624598"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)  [["game_session_id", 1], ["person_id", 1]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mGameSession Load (0.8ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "game_sessions" SET "is_cancelled" = $1, "updated_at" = $2 WHERE "game_sessions"."id" = 1  [["is_cancelled", "t"], ["updated_at", "2014-06-11 01:37:19.210406"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:43:20 -0500
+
+SyntaxError (/home/whan/dev/up/app/controllers/twilio_controller.rb:49: syntax error, unexpected end-of-input, expecting keyword_end):
+  activesupport (4.1.1) lib/active_support/dependencies.rb:443:in `load'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:443:in `block in load_file'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:633:in `new_constants_in'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:442:in `load_file'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:342:in `require_or_load'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:480:in `load_missing_constant'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:180:in `const_missing'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.1) lib/active_support/inflector/methods.rb:236:in `constantize'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:552:in `get'
+  activesupport (4.1.1) lib/active_support/dependencies.rb:583:in `constantize'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.1) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/whan/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:43:34 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.3ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2014-06-11 01:44:45.110018"], ["updated_at", "2014-06-11 01:44:45.110018"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "person_phone_numbers" SET "person_id" = $1, "updated_at" = $2 WHERE "person_phone_numbers"."id" = 2  [["person_id", 4], ["updated_at", "2014-06-11 01:44:45.119717"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "game_sessions" ("created_at", "location", "owner_id", "request_time", "sport", "start_time", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-06-11 01:44:45.143768"], ["location", "park"], ["owner_id", 4], ["request_time", "2014-06-11 01:44:45.138084"], ["sport", "basketball"], ["start_time", "2010-05-05 00:00:00.000000"], ["updated_at", "2014-06-11 01:44:45.143768"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)[0m  [["game_session_id", 2], ["person_id", 4]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 83ms (Views: 4.5ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:45 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.6ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.3ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mGameSession Load (0.3ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 18ms (Views: 9.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:44:54 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:27 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.6ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 41ms (Views: 4.4ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:45:32 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:06 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:51:16 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"CANCELGAME", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.3ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "game_sessions" SET "is_cancelled" = $1, "updated_at" = $2 WHERE "game_sessions"."id" = 2  [["is_cancelled", "t"], ["updated_at", "2014-06-11 01:51:16.842403"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 33ms
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  app/controllers/twilio_controller.rb:47:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"CANCELGAME", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.2ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.1ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 28ms (Views: 5.6ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:51:27 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mGameSession Load (0.5ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 4]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "game_sessions" ("created_at", "location", "owner_id", "request_time", "sport", "start_time", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-06-11 01:52:07.427112"], ["location", "park"], ["owner_id", 4], ["request_time", "2014-06-11 01:52:07.424559"], ["sport", "basketball"], ["start_time", "2010-05-05 00:00:00.000000"], ["updated_at", "2014-06-11 01:52:07.427112"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)  [["game_session_id", 3], ["person_id", 4]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 24ms (Views: 3.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:07 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 19ms (Views: 8.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:12 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.6ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1[0m  [["person_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 17ms (Views: 6.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:20 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"CANCELGAME", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "game_sessions" SET "is_cancelled" = $1, "updated_at" = $2 WHERE "game_sessions"."id" = 3  [["is_cancelled", "t"], ["updated_at", "2014-06-11 01:52:27.890221"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 17ms (Views: 4.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 20:52:27 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:00:56 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:01:04 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"JOINGAME 3", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.3ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mGameSession Load (0.6ms)[0m  SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+                                                              ^
+: SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+Completed 500 Internal Server Error in 31ms
+  [1m[36mGameSession Load (0.2ms)[0m  [1mSELECT "game_sessions".* FROM "game_sessions"  WHERE (3)[0m
+PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+                                                              ^
+: SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+
+NoMethodError (undefined method `register_person' for #<GameSession::ActiveRecord_Relation:0x007f45c8bf6070>):
+  app/controllers/twilio_controller.rb:54:in `parse_message'
+
+
+  [1m[35mGameSession Load (0.2ms)[0m  SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+                                                              ^
+: SELECT "game_sessions".* FROM "game_sessions"  WHERE (3)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:10 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:02:16 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"JOINGAME 3", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.3ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mGameSession Load (0.1ms)[0m  [1mSELECT "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = 3[0m
+Completed 500 Internal Server Error in 55ms
+
+NoMethodError (undefined method `register_person' for #<GameSession::ActiveRecord_Relation:0x000000035c9d58>):
+  app/controllers/twilio_controller.rb:54:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.6ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:33 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:02:39 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"JOINGAME 3", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.3ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = 3
+Completed 500 Internal Server Error in 32ms
+
+NoMethodError (undefined method `register_person' for #<GameSession::ActiveRecord_Relation:0x00000000ca9540>):
+  app/controllers/twilio_controller.rb:54:in `parse_message'
+
+
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.8ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:02:58 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"JOINGAME 3", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.3ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mGameSession Load (0.1ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 36ms (Views: 3.9ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:03:03 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:16:57 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"MAKEGAME basketball park 2010-05-05", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.3ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "game_sessions" ("created_at", "location", "owner_id", "request_time", "sport", "start_time", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-06-11 02:17:35.844455"], ["location", "park"], ["owner_id", 4], ["request_time", "2014-06-11 02:17:35.843489"], ["sport", "basketball"], ["start_time", "2010-05-05 00:00:00.000000"], ["updated_at", "2014-06-11 02:17:35.844455"]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)[0m  [["game_session_id", 4], ["person_id", 4]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 53ms (Views: 4.2ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:17:35 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"9177044688", "textmessage"=>"JOINGAME 4", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.4ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '9177044688'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mGameSession Load (0.3ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mPerson Load (0.3ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)  [["game_session_id", 4], ["person_id", 3]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 26ms (Views: 3.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:00 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"VIEWROSTER 4", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.9ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "game_sessions_people" ON "people"."id" = "game_sessions_people"."person_id" WHERE "game_sessions_people"."game_session_id" = $1[0m  [["game_session_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 18ms (Views: 4.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:18:09 -0500
+
+
+Started GET "/" for 192.168.2.138 at 2014-06-10 21:18:13 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/whan/.rvm/gems/ruby-2.1.2/gems/railties-4.1.1/lib/rails/templates/rails/welcome/index.html.erb (1.2ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.138 at 2014-06-10 21:18:29 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:30 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:35 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SSN0oNDHvOpjZLzDZDEIq1sL7pNLtvVdM6dC688mJYU=", "phone_number"=>"3126931782", "textmessage"=>"REGISTER Jonson Accenture Tsai", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '3126931782'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "person_phone_numbers" ("created_at", "phone_number", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-06-11 02:18:59.181115"], ["phone_number", "3126931782"], ["updated_at", "2014-06-11 02:18:59.181115"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2014-06-11 02:18:59.184734"], ["updated_at", "2014-06-11 02:18:59.184734"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "person_phone_numbers" SET "person_id" = $1, "updated_at" = $2 WHERE "person_phone_numbers"."id" = 5  [["person_id", 5], ["updated_at", "2014-06-11 02:18:59.188120"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "firstname" = $1, "lastname" = $2, "nickname" = $3, "updated_at" = $4 WHERE "people"."id" = 5[0m  [["firstname", "Jonson"], ["lastname", "Tsai"], ["nickname", "Accenture"], ["updated_at", "2014-06-11 02:18:59.191740"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 29ms (Views: 6.7ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.138 at 2014-06-10 21:18:59 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"REGISTER Walter Beast Han", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.5ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.2ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  UPDATE "people" SET "firstname" = $1, "lastname" = $2, "nickname" = $3, "updated_at" = $4 WHERE "people"."id" = 4  [["firstname", "Walter"], ["lastname", "Han"], ["nickname", "Beast"], ["updated_at", "2014-06-11 02:19:30.853172"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 5.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:30 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"VIEWROSTER 4", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "game_sessions_people" ON "people"."id" = "game_sessions_people"."person_id" WHERE "game_sessions_people"."game_session_id" = $1[0m  [["game_session_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 17ms (Views: 8.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:19:39 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"VIEWROSTER 4", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "game_sessions_people" ON "people"."id" = "game_sessions_people"."person_id" WHERE "game_sessions_people"."game_session_id" = $1[0m  [["game_session_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 13ms (Views: 5.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:19:57 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"3128040418", "textmessage"=>"REGISTER Shing Gayboy Yip", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '3128040418'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "person_phone_numbers" ("created_at", "phone_number", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-06-11 02:20:11.449498"], ["phone_number", "3128040418"], ["updated_at", "2014-06-11 02:20:11.449498"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2014-06-11 02:20:11.453199"], ["updated_at", "2014-06-11 02:20:11.453199"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "person_phone_numbers" SET "person_id" = $1, "updated_at" = $2 WHERE "person_phone_numbers"."id" = 6  [["person_id", 6], ["updated_at", "2014-06-11 02:20:11.455888"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "people" SET "firstname" = $1, "lastname" = $2, "nickname" = $3, "updated_at" = $4 WHERE "people"."id" = 6[0m  [["firstname", "Shing"], ["lastname", "Yip"], ["nickname", "Gayboy"], ["updated_at", "2014-06-11 02:20:11.458103"]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 5.3ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:11 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"3128040418", "textmessage"=>"JOINGAME 4", "commit"=>"Send Text"}
+  [1m[36mPersonPhoneNumber Load (0.2ms)[0m  [1mSELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '3128040418'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1[0m
+  [1m[35mPerson Load (0.1ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mGameSession Load (0.2ms)[0m  [1mSELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mPerson Load (0.1ms)[0m  SELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "game_sessions_people" ("game_session_id", "person_id") VALUES ($1, $2)  [["game_session_id", 4], ["person_id", 6]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 4.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:17 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"VIEWROSTER 4", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.2ms)[0m  SELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "game_sessions_people" ON "people"."id" = "game_sessions_people"."person_id" WHERE "game_sessions_people"."game_session_id" = $1[0m  [["game_session_id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 29ms (Views: 20.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:20:23 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:22:13 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:22:14 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:14 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:14 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:14 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:14 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:14 -0500
+
+
+Started GET "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:22:32 -0500
+Processing by TwilioController#parse_message as HTML
+  Rendered twilio/parse_message.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:22:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:37 -0500
+
+
+Started GET "/assets/twilio.css?body=1" for 192.168.2.35 at 2014-06-10 21:22:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:37 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:22:58 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"7602140707", "textmessage"=>"CANCELGAME 4", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.5ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '7602140707'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions" INNER JOIN "game_sessions_people" ON "game_sessions"."id" = "game_sessions_people"."game_session_id" WHERE "game_sessions_people"."person_id" = $1  ORDER BY request_time DESC LIMIT 1  [["person_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "game_sessions" SET "is_cancelled" = $1, "updated_at" = $2 WHERE "game_sessions"."id" = 4  [["is_cancelled", "t"], ["updated_at", "2014-06-11 02:30:41.507442"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  Rendered twilio/parse_message.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 17ms (Views: 4.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:41 -0500
+
+
+Started POST "/twilio/parse_message" for 192.168.2.35 at 2014-06-10 21:30:53 -0500
+Processing by TwilioController#parse_message as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dw1nZcAu0HnmHxuTSTzTTuCUfOm1R4yyLm0vqHwk+Uk=", "phone_number"=>"3128040418", "textmessage"=>"JOINGAME 4", "commit"=>"Send Text"}
+  [1m[35mPersonPhoneNumber Load (0.4ms)[0m  SELECT  "person_phone_numbers".* FROM "person_phone_numbers"  WHERE "person_phone_numbers"."phone_number" = '3128040418'  ORDER BY "person_phone_numbers"."id" ASC LIMIT 1
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people"  WHERE "people"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mGameSession Load (0.3ms)[0m  SELECT  "game_sessions".* FROM "game_sessions"  WHERE "game_sessions"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered twilio/parse_message.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 6.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:53 -0500
+
+
+Started GET "/assets/twilio.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:53 -0500
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.35 at 2014-06-10 21:30:53 -0500
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:53 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:53 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.35 at 2014-06-10 21:30:53 -0500

@@ -22,6 +22,7 @@ class GameSession < ActiveRecord::Base
   def cancel_game_session
     self.is_cancelled = true
     self.save!
+    # change this to send out message to everyone in roster when game is cancelled
   end
 
   def return_roster

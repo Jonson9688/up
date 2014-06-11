@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'twilio/parse_message'
+  post 'twilio/parse_message'
 
   get 'twilio_controller/parse_message'
 

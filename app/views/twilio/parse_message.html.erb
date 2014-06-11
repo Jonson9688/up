@@ -1,7 +1,17 @@
-<h1>Twilio#parse_message</h1>
-<p>Find me in app/views/twilio/parse_message.html.erb</p>
+<h1>Response</h1>
+<%= @response %>
 
 
-<% @people.each do |ind| %>
-<%= ind.firstname %>
+
+
+
+<br><br><br>
+<h1>Send Text</h1>
+
+<%= form_tag("/twilio/parse_message", method: "post") do %>
+<%= label_tag(:phone_number, "Phone Number: ") %>
+<%= text_field_tag(:phone_number) %><br /><br />
+<%= label_tag(:textmessage, "Message: ") %>
+<%= text_field_tag(:textmessage) %><br /><br />
+<%= submit_tag("Send Text") %>
 <% end %>
